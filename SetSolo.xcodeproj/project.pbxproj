@@ -12,6 +12,9 @@
 		29743C002210556300BBFDD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29743BFE2210556300BBFDD1 /* Main.storyboard */; };
 		29743C022210556500BBFDD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29743C012210556500BBFDD1 /* Assets.xcassets */; };
 		29743C052210556500BBFDD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29743C032210556500BBFDD1 /* LaunchScreen.storyboard */; };
+		29743C0E22106BF300BBFDD1 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29743C0D22106BF300BBFDD1 /* SetGame.swift */; };
+		29743C1022106C4A00BBFDD1 /* SetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29743C0F22106C4A00BBFDD1 /* SetCard.swift */; };
+		29743C1222109AEF00BBFDD1 /* SetDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29743C1122109AEF00BBFDD1 /* SetDeck.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		29743C012210556500BBFDD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29743C042210556500BBFDD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		29743C062210556500BBFDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29743C0D22106BF300BBFDD1 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
+		29743C0F22106C4A00BBFDD1 /* SetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCard.swift; sourceTree = "<group>"; };
+		29743C1122109AEF00BBFDD1 /* SetDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDeck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,25 @@
 		29743BF92210556300BBFDD1 /* SetSolo */ = {
 			isa = PBXGroup;
 			children = (
-				29743BFA2210556300BBFDD1 /* AppDelegate.swift */,
+				29743C0C221055E200BBFDD1 /* Supporting files */,
 				29743BFC2210556300BBFDD1 /* ViewController.swift */,
 				29743BFE2210556300BBFDD1 /* Main.storyboard */,
-				29743C012210556500BBFDD1 /* Assets.xcassets */,
-				29743C032210556500BBFDD1 /* LaunchScreen.storyboard */,
 				29743C062210556500BBFDD1 /* Info.plist */,
+				29743C0D22106BF300BBFDD1 /* SetGame.swift */,
+				29743C0F22106C4A00BBFDD1 /* SetCard.swift */,
+				29743C1122109AEF00BBFDD1 /* SetDeck.swift */,
 			);
 			path = SetSolo;
+			sourceTree = "<group>";
+		};
+		29743C0C221055E200BBFDD1 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				29743BFA2210556300BBFDD1 /* AppDelegate.swift */,
+				29743C012210556500BBFDD1 /* Assets.xcassets */,
+				29743C032210556500BBFDD1 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +152,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29743C1222109AEF00BBFDD1 /* SetDeck.swift in Sources */,
+				29743C1022106C4A00BBFDD1 /* SetCard.swift in Sources */,
 				29743BFD2210556300BBFDD1 /* ViewController.swift in Sources */,
+				29743C0E22106BF300BBFDD1 /* SetGame.swift in Sources */,
 				29743BFB2210556300BBFDD1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

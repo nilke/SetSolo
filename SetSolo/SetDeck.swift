@@ -14,12 +14,11 @@ struct SetDeck {
     var cards = [SetCard]()
     
     private mutating func createDeck(){
-        let threerange = 1...3
-        for color in threerange{
-            for symbol in threerange{
-                for number in threerange{
-                    for shading in threerange{
-                        unshuffledCards.append(SetCard(c: color,s: symbol,n: number,sh: shading))
+        for color in SetCard.cardColor.all{
+            for symbol in SetCard.cardSymbol.all{
+                for number in SetCard.cardNumber.all{
+                    for shading in SetCard.cardShading.all{
+                        unshuffledCards.append(SetCard(color: color, symbol: symbol, number: number, shading: shading))
                     }
                 }
             }

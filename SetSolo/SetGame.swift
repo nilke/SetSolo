@@ -9,15 +9,6 @@
 import Foundation
 
 
-// List of cards that are being played
-// The seleceted cards
-// WHether the selected cards are a match
-// A deck of cards from which it is dealing
-// Probably Keep track of the cards that have alreadu been matched
-
-
-
-// Add closure
 
 struct SetGame {
     private var deck = SetDeck()

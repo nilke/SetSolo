@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //Test comment for commit
     
     var game = SetGame()
     
@@ -49,7 +48,9 @@ class ViewController: UIViewController {
         cardsInDeckLabel.text = "Cards in deck: \(game.cardsInDeck)"
         scoreLabel.text = "Score: \(game.score)"
         for index in buttons.indices{
+//            print("game data \(game.cardsOnBoard[index])")
             cardButtons[buttons[index]] = game.cardsOnBoard[index] //Sync the buttons with the game model
+  //          print("copied over data \(cardButtons[buttons[index]])")
             if let cardForIndex = cardButtons[buttons[index]]{
                 if game.selectedCards.contains(cardForIndex){
                     buttons[index].markSelected(for: cardForIndex)

@@ -6,71 +6,76 @@
 //  Copyright © 2019 Nils. All rights reserved.
 //
 
+// TODO Step1: Create only bounds based constants that are containted in extension and struct
+// TODO Step 2: Create Symbol class that draws and change this class to laying out three parts of each card that are "Draw areas" depending on number of objects
+
 import UIKit
 
 @IBDesignable
 
 class SetCardView: UIView {
-
+    
     var color = "Red"
     
-    var shape = "Squiggle"
+    var shape = "Diamond"
     
-    var numberOfShapes = "two"
+    var numberOfShapes = 3
     
-    var shading = "Striped"
+    var shading = "Squiggle"
     
     
-    override func draw(_ rect: CGRect){
-        let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
-        roundedRect.addClip()
-        UIColor.white.setFill()
-        roundedRect.fill()
-//        print(rankString+suit)
-//        if isFaceUp{
-//            if let faceCardImage = UIImage(named: rankString+suit, in: Bundle(for: self.classForCoder), compatibleWith: traitCollection){
-//                faceCardImage.draw(in: bounds.zoom(by: faceCardScale))
-//            } else {
-//                drawPips()
-//            }
-//        } else {
-//            if let cardBackImage = UIImage(named: "cardback", in: Bundle(for: self.classForCoder), compatibleWith: traitCollection){
-//                cardBackImage.draw(in: bounds)
-//            }
-//        }
+    
+    var pathToDraw : UIBezierPath {
+        switch numberOfShapes {
+        case 1 : return layoutForOneCard()
+        case 2 : return layoutForTwoCards()
+        case 3 : return layoutForThreeCards()
+        default : return drawDefault()
+        }
     }
     
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    func layoutForOneCard() -> UIBezierPath{
+        
+        
     }
-    */
-
+    
+    func layoutForTwoCards() -> UIBezierPath{
+        
+        
+        func layoutForThreeCards() -> UIBezierPath{
+        }
+        
+        func drawDefault() -> UIBezierPath{
+            
+        }
+        
+        override func layoutSubviews(){
+            super .layoutSubviews()
+            
+            
+        }
 }
 
-extension SetCardView {
-    private struct SizeRatio {
-        static let cornerFontSizeToBoundsHeight: CGFloat = 0.085
-        static let cornerRadiusToBoundsHeight: CGFloat = 0.06
-        static let cornerOffsetToCornerRadius: CGFloat = 0.33
-        static let faceCardImageSizeToBoundsSize: CGFloat = 0.75
-    }
-    
-    private var cornerRadius: CGFloat {
-        return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
-    }
-    
-    private var cornerOffset: CGFloat {
-        return cornerRadius * SizeRatio.cornerOffsetToCornerRadius
-    }
-    
-    private var cornerFontSize: CGFloat {
-        return bounds.size.height * SizeRatio.cornerFontSizeToBoundsHeight
-    }
-    
-
-    
-}
+//extension SetCardView {
+//    private struct SizeRatio {
+//        static let cornerFontSizeToBoundsHeight: CGFloat = 0.085
+//        static let cornerRadiusToBoundsHeight: CGFloat = 0.06
+//        static let cornerOffsetToCornerRadius: CGFloat = 0.33
+//        static let faceCardImageSizeToBoundsSize: CGFloat = 0.75
+//    }
+//
+//    private var cornerRadius: CGFloat {
+//        return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
+//    }
+//
+//    private var cornerOffset: CGFloat {
+//        return cornerRadius * SizeRatio.cornerOffsetToCornerRadius
+//    }
+//
+//    private var cornerFontSize: CGFloat {
+//        return bounds.size.height * SizeRatio.cornerFontSizeToBoundsHeight
+//    }
+//
+//
+//
+//}

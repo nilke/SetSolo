@@ -42,6 +42,9 @@
                                     <constraint firstAttribute="width" secondItem="P63-Fp-sYo" secondAttribute="height" multiplier="7:1" priority="750" id="gL9-CZ-roB"/>
                                 </constraints>
                                 <state key="normal" title="Three More Cards"/>
+                                <connections>
+                                    <action selector="threeMoreCardsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G1h-a5-g3w"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,6 +64,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="playingBoard" destination="LHc-ms-ahT" id="iae-LP-wkp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

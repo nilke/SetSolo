@@ -13,7 +13,11 @@ import UIKit
 
 class ViewController: UIViewController {
  
-    var hej = 0
+    @IBOutlet weak var playingBoard: PlayingBoardView!
+    
+    @IBAction func threeMoreCardsButton(_ sender: UIButton) {
+        playingBoard.numberOfCards += 3
+    }
     
     
 }

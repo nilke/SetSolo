@@ -12,14 +12,83 @@
 import UIKit
 
 class ViewController: UIViewController {
- 
-    @IBOutlet weak var playingBoard: PlayingBoardView!
+
+    
+    @objc func touchCard(_ card: SetCardView?) {
+        print(card!)
+    }
+    
+    @IBOutlet weak var playingBoardView: UIView!
+    
+    let cardAspectRatio : CGFloat = 5/8
+    
+    lazy var cardGrid = Grid(layout: Grid.Layout.aspectRatio(cardAspectRatio), frame: playingBoardView.frame.adjustRect())
+//
+//
+    var game = SetGame()
+    var cards = [cardViewData]()
     
     @IBAction func threeMoreCardsButton(_ sender: UIButton) {
-        playingBoard.numberOfCards += 3
+        game.dealThreeCards()
+        updateViewFromModel()
+    }
+    @IBAction func newGame(_ sender: UIButton) {
+        game = SetGame()
+        updateViewFromModel()
+    }
+    
+    override func viewDidLoad() {
+        //playingView.cardsViewData.append(card)
+        updateViewFromModel()
+    }
+
+    func updateViewFromModel(){
+  
+    }
+    
+    func cardModelToViewTransform(modelCard: SetCard) -> cardViewData {
+        return cardViewData(
+            color: modelCard.color.rawValue,
+            shape: modelCard.symbol.rawValue,
+            numberOfShapes: modelCard.number.rawValue,
+            shading: modelCard.shading.rawValue)
     }
     
     
+    func layout(){
+        cardGrid.cellCount = game.cardsOnBoard.count
+
+        for gridIndex in 0..<cardGrid.cellCount{
+            let myCard = SetCardView()
+            myCard.cardData = cardModelToViewTransform(modelCard: game.cardsOnBoard[gridIndex])
+            let tap = UITapGestureRecognizer(target: self, action: #selector(touchCard(_:)))
+
+            myCard.addGestureRecognizer(tap)
+            if cardGrid[gridIndex] != nil {
+                myCard.frame = cardGrid[gridIndex]!.insetBy(dx: 2.0, dy: 2.0)
+
+
+            }
+            playingBoardView.addSubview(myCard)
+        }
+    }
+    
+    
+}
+
+extension CGPoint {
+    func offsetBy(dx: CGFloat, dy: CGFloat) -> CGPoint {
+        return CGPoint(x: x + dx, y: y + dy)
+    }
+}
+
+extension CGRect {
+    
+    static let padding : CGFloat = 10.0
+    
+    func adjustRect() -> CGRect {
+        return CGRect(x: CGRect.padding, y: CGRect.padding, width: width - CGRect.padding*2, height: height - CGRect.padding*2)
+    }
 }
 
 
@@ -31,8 +100,7 @@ class ViewController: UIViewController {
 //
 //    var game = SetGame()
 //
-//    @IBOutlet weak var cardsInDeckLabel: UILabel!
-//    @IBOutlet weak var scoreLabel: UILabel!
+
 //    @IBOutlet var buttons: [UIButton]!
 //    var cardButtons = [UIButton: SetCard]()
 //    @IBOutlet weak var threeMoreCardsButton: UIButton!

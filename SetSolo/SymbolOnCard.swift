@@ -10,141 +10,170 @@ import UIKit
 
 @IBDesignable
 
-class SymbolOnCard: UIView {
+class SymbolView: UIView {
     
-    var color = "Red"
+    var color = 0 {didSet {setNeedsDisplay(); setNeedsLayout()}}
     
-    var shape = "Diamond"
+    var shape = 0 {didSet {setNeedsDisplay(); setNeedsLayout()}}
     
-    var numberOfShapes = "two"
+    var shading = 0 {didSet {setNeedsDisplay(); setNeedsLayout()}}
     
-    var shading = "Squiggle"
-    
-    
-    
-    var pathToDraw : UIBezierPath {
+
+    private var pathToDraw : UIBezierPath {
         switch shape {
-        case "Squiggle" : return drawSquiggle()
-        case "Rounded" : return drawRounded()
-        case "Diamond" : return drawDiamond()
+        case 1 : return drawSquiggle()
+        case 2 : return drawRounded()
+        case 3 : return drawDiamond()
         default : return drawDefault()
         }
     }
     
-    func drawSquiggle() -> UIBezierPath{
+    private var symbolColor : UIColor {
+        switch color {
+        case 1 : return UIColor.red
+        case 2 : return UIColor.blue
+        case 3 : return UIColor.green
+        default : return UIColor.black
+        }
+    }
+    
+    private func drawSquiggle() -> UIBezierPath{
         
         let middleY : CGFloat = bounds.height / 2
-        let startX : CGFloat = 25
-        let endX : CGFloat = 325
-        let heighoffset : CGFloat = 50
+        let startX : CGFloat = 0
+        let endX : CGFloat = bounds.width
+        let heighoffset : CGFloat = bounds.height / 3
         let firstCntrlX : CGFloat = (endX - startX) / 3
         let secondCntrlX : CGFloat = (endX - startX) / 3 * 2
         let firstCntrlY : CGFloat =  (heighoffset * 4)
         let secondCntrlY : CGFloat = (heighoffset * 1)
         
-        let roundPath = UIBezierPath()
+        let squigglePath = UIBezierPath()
         
-        roundPath.move(to: CGPoint(x: startX, y: middleY + heighoffset))
+        squigglePath.move(to: CGPoint(x: startX, y: middleY + heighoffset))
         
-        roundPath.addCurve(
+        squigglePath.addCurve(
             to: CGPoint(x: endX, y: middleY - heighoffset),
             controlPoint1: CGPoint(x: startX + firstCntrlX ,y: middleY - firstCntrlY ),
             controlPoint2: CGPoint(x: startX + secondCntrlX ,y: middleY + secondCntrlY)
         )
         
-        roundPath.addCurve(
+        squigglePath.addCurve(
             to: CGPoint(x: startX, y: middleY + heighoffset),
             controlPoint1: CGPoint(x: startX + secondCntrlX ,y: middleY + firstCntrlY ),
             controlPoint2: CGPoint(x: startX + firstCntrlX ,y: middleY - secondCntrlY)
         )
+        squigglePath.close()
+        squigglePath.lineWidth = linewidth // Needs to be here since path is calculated and otherwise returned to default 1.0 when stroked
+        squigglePath.addClip()
         
-        return roundPath
+        return squigglePath
         
     }
     
-    func drawRounded() -> UIBezierPath{
+    private func drawRounded() -> UIBezierPath{
         let roundPath = UIBezierPath()
-        roundPath.move(to: CGPoint(x: 0.24*bounds.width,y: bounds.height/2 * 8/10))
+        roundPath.move(to: CGPoint(x: 0 + bounds.height/2,y: 0))
+        
         roundPath.addArc(
-            withCenter: CGPoint(x: bounds.width - 0.24*bounds.width, y: bounds.height/2),
-            radius: bounds.height/10,
+            withCenter: CGPoint(x: bounds.width - (bounds.height / 2), y: bounds.height/2),
+            radius: bounds.height/2,
             startAngle: CGFloat.pi * 3/2 ,
             endAngle: CGFloat.pi / 2,
             clockwise: true
         )
         roundPath.addArc(
-            withCenter: CGPoint(x: 0.24*bounds.width, y: bounds.height/2),
-            radius: bounds.height/10,
+            withCenter: CGPoint(x: 0 + bounds.height/2, y: bounds.height/2),
+            radius: bounds.height/2,
             startAngle: CGFloat.pi/2 ,
             endAngle: CGFloat.pi * 3/2,
             clockwise: true
         )
         roundPath.close()
-        
+        roundPath.lineWidth = linewidth // Needs to be here since path is calculated and otherwise returned to default 1.0 when stroked
+
+        roundPath.addClip()
         return roundPath    }
     
-    func drawDiamond() -> UIBezierPath{
-        let roundPath = UIBezierPath()
+    private func drawDiamond() -> UIBezierPath{
+        let diamondPath = UIBezierPath()
         
-        roundPath.move(
-            to: CGPoint(x: 0.15*bounds.width,y: bounds.height/2)
+        diamondPath.move(
+            to: CGPoint(x: 0,y: bounds.height/2)
         )
-        roundPath.addLine(
-            to: CGPoint(x: bounds.width/2, y:bounds.height/2 * 8/10)
+        diamondPath.addLine(
+            to: CGPoint(x: bounds.width/2, y:0)
         )
-        roundPath.addLine(
-            to: CGPoint(x: 0.85*bounds.width, y:bounds.height/2)
+        diamondPath.addLine(
+            to: CGPoint(x: bounds.width, y:bounds.height/2)
         )
-        roundPath.addLine(
-            to: CGPoint(x: bounds.width/2, y:bounds.height/2 * 12/10)
+        diamondPath.addLine(
+            to: CGPoint(x: bounds.width/2, y:bounds.height)
         )
         
-        roundPath.close()
+        diamondPath.close()
+        diamondPath.lineWidth = linewidth // Needs to be here since path is calculated and otherwise returned to default 1.0 when stroked
+        diamondPath.addClip()
+        return diamondPath
         
-        return roundPath    }
+    }
     
-    func drawDefault() -> UIBezierPath{
-        let roundPath = UIBezierPath()
-        return roundPath
+    private func drawDefault() -> UIBezierPath{
+         let whiteBlock = UIBezierPath()
+
+        return whiteBlock
+    }
+    
+    private func stripe(){
+        let stripes = UIBezierPath()
+        
+        for stripenumber in 0..<8{
+            stripes.move(
+                to: CGPoint(x: CGFloat(stripenumber) * bounds.width / 8,y: 0)
+            )
+            stripes.addLine(
+                to: CGPoint(x: CGFloat(stripenumber) * bounds.width / 8, y:bounds.height)
+            )
+        }
+        stripes.lineWidth = linewidth
+        stripes.stroke()
+    }
+    
+    private func setShade(){
+        switch shading {
+        case 1:
+            pathToDraw.fill()
+        case 2:
+            pathToDraw.stroke()
+        case 3:
+            stripe()
+            pathToDraw.stroke()
+        default:
+            pathToDraw.stroke()
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        setNeedsDisplay()
+        setNeedsLayout()
     }
     
     override func draw(_ rect: CGRect){
-        let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
-        roundedRect.addClip()
-        UIColor.white.setFill()
-        // self.isOpaque = true
-        roundedRect.fill()
-        
-        UIColor.green.setFill()
-        UIColor.red.setStroke()
-        pathToDraw.lineWidth = 1.0
-        //pathToDraw.fill()
-        pathToDraw.stroke()
-        
-        
+        self.contentMode = .redraw
+        symbolColor.setStroke()
+        symbolColor.setFill()
+        //pathToDraw.stroke()
+        setShade()
     }
 }
 
-extension SetCardView {
-    private struct SizeRatio {
-        static let cornerFontSizeToBoundsHeight: CGFloat = 0.085
-        static let cornerRadiusToBoundsHeight: CGFloat = 0.06
-        static let cornerOffsetToCornerRadius: CGFloat = 0.33
-        static let faceCardImageSizeToBoundsSize: CGFloat = 0.75
+extension SymbolView{
+    private struct Sizeratios{
+        static let lineToWidthRatio : CGFloat = 0.04
     }
     
-    private var cornerRadius: CGFloat {
-        return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
+    private var linewidth : CGFloat {
+        return bounds.width * Sizeratios.lineToWidthRatio
     }
-    
-    private var cornerOffset: CGFloat {
-        return cornerRadius * SizeRatio.cornerOffsetToCornerRadius
-    }
-    
-    private var cornerFontSize: CGFloat {
-        return bounds.size.height * SizeRatio.cornerFontSizeToBoundsHeight
-    }
-    
-    
-    
 }
+

@@ -31,8 +31,8 @@ class SymbolView: UIView {
     private var symbolColor : UIColor {
         switch color {
         case 1 : return UIColor.red
-        case 2 : return UIColor.blue
-        case 3 : return UIColor.green
+        case 2 : return UIColor.init(displayP3Red: 161/256, green: 66/256, blue: 196/256, alpha: 1.0)
+        case 3 : return UIColor.init(displayP3Red: 67/256, green: 196/256, blue: 55/256, alpha: 1.0)
         default : return UIColor.black
         }
     }
@@ -160,9 +160,10 @@ class SymbolView: UIView {
     
     override func draw(_ rect: CGRect){
         self.contentMode = .redraw
+        layer.borderWidth = 0.0
         symbolColor.setStroke()
         symbolColor.setFill()
-        //pathToDraw.stroke()
+        pathToDraw.addClip()
         setShade()
     }
 }

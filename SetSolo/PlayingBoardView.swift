@@ -60,17 +60,3 @@ class PlayingBoardView: UIView {
 }
 
 
-extension CGPoint {
-    func offsetBy(dx: CGFloat, dy: CGFloat) -> CGPoint {
-        return CGPoint(x: x + dx, y: y + dy)
-    }
-}
-
-extension CGRect {
-    
-    static let padding : CGFloat = 10.0
-    
-    func adjustRect() -> CGRect {
-        return CGRect(x: CGRect.padding, y: CGRect.padding, width: width - CGRect.padding*2, height: height - CGRect.padding*2)
-    }
-}

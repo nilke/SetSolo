@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,62 +20,80 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="LHc-ms-ahT">
-                                <rect key="frame" x="20" y="64" width="335" height="624"/>
+                                <rect key="frame" x="20" y="64" width="335" height="574"/>
                                 <color key="backgroundColor" red="0.70396190881729126" green="0.85559964179992676" blue="0.92947053909301758" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="1000" id="3me-j8-drv"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRW-Pt-fjz">
-                                <rect key="frame" x="197.66666666666663" y="708" width="157.33333333333337" height="50"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AQH-vr-3c4">
+                                <rect key="frame" x="20" y="658" width="335" height="100"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XHu-yN-fY0">
+                                        <rect key="frame" x="0.0" y="0.0" width="163.66666666666666" height="100"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRW-Pt-fjz">
+                                                <rect key="frame" x="0.0" y="0.0" width="163.66666666666666" height="46"/>
+                                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="New Game">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QrF-5t-n7g"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P63-Fp-sYo">
+                                                <rect key="frame" x="0.0" y="54" width="163.66666666666666" height="46"/>
+                                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Three More Cards">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="threeMoreCardsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G1h-a5-g3w"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="P63-Fp-sYo" firstAttribute="width" secondItem="VRW-Pt-fjz" secondAttribute="width" id="OU6-52-7nd"/>
+                                            <constraint firstItem="P63-Fp-sYo" firstAttribute="height" secondItem="VRW-Pt-fjz" secondAttribute="height" id="tZp-E8-QsR"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SCORE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhw-kb-9BX">
+                                        <rect key="frame" x="171.66666666666663" y="0.0" width="163.33333333333337" height="100"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="VRW-Pt-fjz" secondAttribute="height" multiplier="7:1" priority="750" id="ahd-c2-U79"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="i1j-bZ-Xls"/>
+                                    <constraint firstAttribute="height" secondItem="XHu-yN-fY0" secondAttribute="height" id="46j-hO-BeI"/>
+                                    <constraint firstItem="bhw-kb-9BX" firstAttribute="width" secondItem="XHu-yN-fY0" secondAttribute="width" id="ZZ1-gk-7X1"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="jOs-Tu-GlF"/>
+                                    <constraint firstItem="bhw-kb-9BX" firstAttribute="height" secondItem="XHu-yN-fY0" secondAttribute="height" id="yMd-VN-wFn"/>
                                 </constraints>
-                                <state key="normal" title="New Game"/>
-                                <connections>
-                                    <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QrF-5t-n7g"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P63-Fp-sYo">
-                                <rect key="frame" x="20" y="708" width="157.66666666666666" height="50"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="cRF-El-3on"/>
-                                    <constraint firstAttribute="width" secondItem="P63-Fp-sYo" secondAttribute="height" multiplier="7:1" priority="750" id="gL9-CZ-roB"/>
-                                </constraints>
-                                <state key="normal" title="Three More Cards"/>
-                                <connections>
-                                    <action selector="threeMoreCardsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G1h-a5-g3w"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LHc-ms-ahT" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="5lb-mw-A4I"/>
-                            <constraint firstItem="LHc-ms-ahT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="FQk-bM-EHq"/>
-                            <constraint firstItem="LHc-ms-ahT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HSt-fT-b6Z"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VRW-Pt-fjz" secondAttribute="trailing" constant="20" id="KNp-Pm-BJU"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="P63-Fp-sYo" secondAttribute="bottom" constant="20" id="Ngm-od-8gZ"/>
-                            <constraint firstItem="P63-Fp-sYo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="NlV-DU-5nr"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VRW-Pt-fjz" secondAttribute="bottom" constant="20" id="Ude-bb-4lc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LHc-ms-ahT" secondAttribute="trailing" constant="20" id="VIR-ms-bMl"/>
-                            <constraint firstItem="VRW-Pt-fjz" firstAttribute="width" secondItem="P63-Fp-sYo" secondAttribute="width" id="bGr-A8-JBQ"/>
-                            <constraint firstItem="VRW-Pt-fjz" firstAttribute="leading" secondItem="P63-Fp-sYo" secondAttribute="trailing" constant="20" id="ePp-5K-BmT"/>
-                            <constraint firstItem="P63-Fp-sYo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LHc-ms-ahT" secondAttribute="bottom" constant="20" id="mRO-mL-nAL"/>
-                            <constraint firstItem="VRW-Pt-fjz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LHc-ms-ahT" secondAttribute="bottom" constant="20" id="vpA-1Q-QQ8"/>
+                            <constraint firstItem="AQH-vr-3c4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="51k-ar-uE8"/>
+                            <constraint firstItem="LHc-ms-ahT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="6Um-HX-JHz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AQH-vr-3c4" secondAttribute="trailing" constant="20" id="6WF-PH-K2z"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AQH-vr-3c4" secondAttribute="bottom" constant="20" id="FSs-xF-jaa"/>
+                            <constraint firstItem="AQH-vr-3c4" firstAttribute="top" secondItem="LHc-ms-ahT" secondAttribute="bottom" constant="20" id="VAG-hx-rGy"/>
+                            <constraint firstItem="LHc-ms-ahT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="a1o-NB-iC6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LHc-ms-ahT" secondAttribute="trailing" constant="20" id="wa5-DU-tKV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="boardForCards" destination="LHc-ms-ahT" id="SK0-wl-8is"/>
+                        <outlet property="mainView" destination="8bC-Xf-vdC" id="S0b-Ji-leS"/>
                         <outlet property="playingBoardView" destination="LHc-ms-ahT" id="cuD-y2-Myd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139.13043478260872" y="133.92857142857142"/>
+            <point key="canvasLocation" x="138.40000000000001" y="133.74384236453201"/>
         </scene>
     </scenes>
 </document>

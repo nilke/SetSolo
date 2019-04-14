@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		2935767E223C4BC60089AAAC /* SetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2935767D223C4BC60089AAAC /* SetCardView.swift */; };
 		2949345C2244AE3A001780CB /* SymbolOnCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2949345B2244AE3A001780CB /* SymbolOnCard.swift */; };
-		2949345E224B3D6A001780CB /* cardViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2949345D224B3D69001780CB /* cardViewData.swift */; };
-		295B229F223CF65000570721 /* PlayingBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B229E223CF65000570721 /* PlayingBoardView.swift */; };
 		29743BFB2210556300BBFDD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29743BFA2210556300BBFDD1 /* AppDelegate.swift */; };
 		29743BFD2210556300BBFDD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29743BFC2210556300BBFDD1 /* ViewController.swift */; };
 		29743C002210556300BBFDD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29743BFE2210556300BBFDD1 /* Main.storyboard */; };
@@ -25,8 +23,6 @@
 /* Begin PBXFileReference section */
 		2935767D223C4BC60089AAAC /* SetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardView.swift; sourceTree = "<group>"; };
 		2949345B2244AE3A001780CB /* SymbolOnCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolOnCard.swift; sourceTree = "<group>"; };
-		2949345D224B3D69001780CB /* cardViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cardViewData.swift; sourceTree = "<group>"; };
-		295B229E223CF65000570721 /* PlayingBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingBoardView.swift; sourceTree = "<group>"; };
 		29743BF72210556300BBFDD1 /* SetSolo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetSolo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29743BFA2210556300BBFDD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29743BFC2210556300BBFDD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,8 +76,6 @@
 				29743C0D22106BF300BBFDD1 /* SetGame.swift */,
 				29743C0F22106C4A00BBFDD1 /* SetCard.swift */,
 				29743C1122109AEF00BBFDD1 /* SetDeck.swift */,
-				295B229E223CF65000570721 /* PlayingBoardView.swift */,
-				2949345D224B3D69001780CB /* cardViewData.swift */,
 			);
 			path = SetSolo;
 			sourceTree = "<group>";
@@ -167,9 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2949345E224B3D6A001780CB /* cardViewData.swift in Sources */,
 				29743C1222109AEF00BBFDD1 /* SetDeck.swift in Sources */,
-				295B229F223CF65000570721 /* PlayingBoardView.swift in Sources */,
 				2935767E223C4BC60089AAAC /* SetCardView.swift in Sources */,
 				2949345C2244AE3A001780CB /* SymbolOnCard.swift in Sources */,
 				29C01509223E449E00DA2C53 /* Grid.swift in Sources */,

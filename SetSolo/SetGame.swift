@@ -9,11 +9,10 @@
 import Foundation
 
 
-
 struct SetGame {
     private var deck = SetDeck()
     var cardsInDeck: Int {
-        get{
+        get {
             return deck.cards.count
         }
     }

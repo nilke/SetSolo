@@ -55,16 +55,16 @@ class SetCardView: UIView {
         roundedRect.fill()
     }
     
-    enum StateOfSetCardButton {
+    enum StateOfSetCardView {
         case unselected
         case selected
         case hinted
         case selectedAndMatched
     }
     
-    var stateOfSetCardButton: StateOfSetCardButton = .unselected {
+    var stateOfSetCardView: StateOfSetCardView = .unselected {
         didSet {
-            switch stateOfSetCardButton {
+            switch stateOfSetCardView {
             case .unselected:
                 layer.borderWidth = LayOutMetricsForCardView.borderWidth
                 layer.borderColor = LayOutMetricsForCardView.borderColor
@@ -83,25 +83,29 @@ class SetCardView: UIView {
 }
 
 
-struct LayOutMetricsForCardView {
-    static var borderWidth: CGFloat = 0.0
-    static var borderWidthIfSelected: CGFloat = 4.0
-    static var borderColorIfSelected: CGColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
-    
-    static var borderWidthIfHinted: CGFloat = 4.0
-    static var borderColorIfHinted: CGColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1).cgColor
-    
-    static var borderWidthIfMatched: CGFloat = 4.0
-    static var borderColorIfMatched: CGColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1).cgColor
-    
-    static var borderColor: CGColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-    static var borderColorForDrawButton: CGColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-    static var borderWidthForDrawButton: CGFloat = 3.0
-    static var cornerRadius: CGFloat = 8.0
-}
+
 // Understand why constants are created this way
 
 extension SetCardView {
+    
+    private struct LayOutMetricsForCardView {
+        static var borderWidth: CGFloat = 0.0
+        static var borderWidthIfSelected: CGFloat = 4.0
+        static var borderColorIfSelected: CGColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
+        
+        static var borderWidthIfHinted: CGFloat = 4.0
+        static var borderColorIfHinted: CGColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1).cgColor
+        
+        static var borderWidthIfMatched: CGFloat = 4.0
+        static var borderColorIfMatched: CGColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1).cgColor
+        
+        static var borderColor: CGColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        static var borderColorForDrawButton: CGColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        static var borderWidthForDrawButton: CGFloat = 3.0
+        static var cornerRadius: CGFloat = 8.0
+    }
+    
+    
     private struct SizeRatio {
         static let cardSections : CGFloat = 7
         static let cardSectionsInt : Int = Int(SizeRatio.cardSections)

@@ -25,6 +25,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="1000" id="3me-j8-drv"/>
                                 </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AQH-vr-3c4">
                                 <rect key="frame" x="20" y="658" width="335" height="100"/>
@@ -89,6 +90,7 @@
                     <connections>
                         <outlet property="mainView" destination="8bC-Xf-vdC" id="S0b-Ji-leS"/>
                         <outlet property="playingBoardView" destination="LHc-ms-ahT" id="cuD-y2-Myd"/>
+                        <outlet property="scoreLabel" destination="bhw-kb-9BX" id="IPw-zm-OMg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
